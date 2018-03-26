@@ -1,0 +1,32 @@
+# Add configuration values here, as shown below.
+#
+# pusher_app_id: "2954"
+# pusher_key: 7381a978f7dd7f9a1117
+# pusher_secret: abdc3b896a0ffb85d373
+# stripe_api_key: sk_test_2J0l093xOyW72XUYJHE4Dv2r
+# stripe_publishable_key: pk_test_ro9jV5SNwGb1yYlQfzG17LHK
+#
+# production:
+#   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
+#   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
+
+APP_NAME: 后台管理
+DATABASE_NAME: wxadmin
+DATABASE_USERNAME: root
+DATABASE_PASSWORD: 123abc..
+API_APP_NAME: 系统接口 API
+API_INFO_TITLE: 可用接口
+API_INFO_DESC: 所有已开放接口均以列出,如有特殊情况请联系我们.
+API_DOC_VERSION: 0.0.1
+
+development:
+  APP_NAME: 后台系统
+  DATABASE_NAME: wxadmin_dev
+  DATABASE_USERNAME: root
+  DATABASE_PASSWORD: 123abc..
+
+production:
+  APP_NAME: 管理系统
+  DATABASE_NAME: wxadmin_pro
+  DATABASE_USERNAME: root
+  DATABASE_PASSWORD: 123abc..
