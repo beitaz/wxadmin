@@ -18,7 +18,6 @@ $ rails new wxadmin -T --skip-spring -C -M -d mysql --api -B
 * `config/initializers/application_controller_renderer.rb` 帮助开发环境重新渲染页面
 * `config/initializers/backtrace_silencers.rb` 开发环境出错时回溯第三方库
 * `config/initializers/mime_types.rb` 扩展文件类型
-```
 
 ## 开发流程
 
