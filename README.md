@@ -47,6 +47,23 @@ $ rails new wxadmin -T --skip-spring -C -M -d mysql --api -B
   end
   ```
 
+## 登录授权
+任何可以解析 JSON 的终端都可以使用 API 程序,导致正常的 Cookie 授权无法使用,使用 [JSON Web Token](https://en.wikipedia.org/wiki/JSON_Web_Token) 进行登录授权.
+
+* 修改 `Gemfile` 添加 `gem 'jwt'` (若有 `gem 'devise'` 则移除)
+* 修改 `Gemfile` 取消 `gem 'bcrypt'` 前的注释
+* 生成用户模型
+  ```SHELL
+  $ rails g model User account password_digest phone email username admin:boolean
+  ```
+* 修改生成的 `app/models/user.rb`
+  ```RUBY
+  class User < ApplicationRecord
+    has_secure_password
+    validates :account, presence: true
+  end
+  ```
+
 ## 添加支持类型
 
 * 编辑修改 `config/initializers/mime_types.rb` 中的定义 [ MIME types ](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types)
@@ -61,6 +78,8 @@ $ rails new wxadmin -T --skip-spring -C -M -d mysql --api -B
     object.publication_date.strftime "%Y-%m-%d"
   end
   ```
+## 开发技巧
+* 代码中添加 `# TODO: 注释内容` 后,可通过 `rake notes:todo` 或 `grep -rn "# TODO" .` 显示所有任务.
 
 ## Grape 配置(选用)
 
