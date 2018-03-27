@@ -73,6 +73,49 @@ $ rails new wxadmin -T --skip-spring -C -M -d mysql --api -B
     validates :account, presence: true, exclusion: { in: %w[admin superuser] }
   end
   ```
+* Postman 测试接口(授权)
+  - 选择请求类型为 POST 并输入 URL 地址 http://localhost:3000/user_token
+  - 设置 Headers 类型
+    ```TEXT
+    Content-Type: Application/json
+    ```
+  - 设置 body 数据类型为 raw JSON(application/json) 并输入
+    ```JSON
+    {
+      "auth": {
+        "username": "admin",
+        "password": "123abc.."
+      }
+    }
+    ```
+  - 发送请求获取 token
+    ```JSON
+    {
+      "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MjIyNDQ2ODYsInN1YiI6MX0.reh2pIMFbKUp-IN_8vrOLErICRxjmpBOXFNX5_EyGh0"
+    }
+    ```
+* Postman 测试接口(获取数据)
+  - 选择请求类型为 GET 并输入 URL 地址 http://localhost:3000/users
+  - 设置 Headers 类型 **注意格式 `Bearer <jwt_key>`**
+    ```TEXT
+    Content-Type: Application/json
+    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MjIyNDQ2ODYsInN1YiI6MX0.reh2pIMFbKUp-IN_8vrOLErICRxjmpBOXFNX5_EyGh0
+    ```
+  - 发送请求获取用户列表 (可修改 user_serializer 暴露字段)
+    ```JSON
+    [
+      {
+        "id": 1,
+        "username": "beitaz",
+        "phone": null,
+        "email": null,
+        "nick": null,
+        "role": "normal",
+        "last_login": null,
+        "deleted": false
+      }
+    ]
+    ```
 
 ## 添加支持类型
 
