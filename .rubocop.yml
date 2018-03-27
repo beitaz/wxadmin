@@ -4,9 +4,19 @@ AllCops:
   Exclude:
     - 'node_modules/**/*'
     - 'bin/*'
+    - 'lib/**/*'
+    - 'db/schema.rb'
+
+Layout/IndentationConsistency:
+  EnforcedStyle: rails
+
+Security/Open:
+  Exclude:
+    - 'lib/**/*'
 
 Style/AsciiComments:
   Enabled: false
+
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, EnforcedStyle.
@@ -27,6 +37,12 @@ Style/EmptyMethod:
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: when_needed, always, never
 Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# foo.bar if foo  =>  foo&.bar
+# Configuration parameters: ConvertCodeThatCanStartToReturnNil (false)
+# Configuration parameters: Whitelist ([present?, blank?, presence, try])
+Style/SafeNavigation:
   Enabled: false
 
 # Offense count: 1
