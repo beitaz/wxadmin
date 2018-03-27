@@ -19,8 +19,7 @@ class DecodeAuthenticationCommand < BaseCommand
     end
 
     def token_not_expired?
-      decoded_expiration_timestamp >= Time.now.to_i ||
-        errors.add(:token, 'Token Expired') && nil
+      decoded_expiration_timestamp >= Time.now.to_i || errors.add(:token, 'Token Expired') && nil
     end
 
     def token_present?
@@ -42,7 +41,7 @@ class DecodeAuthenticationCommand < BaseCommand
     end
 
     def decoded_id
-      token_contents['user_id']
+      token_contents['uid']
     end
 
     def decoded_expiration_timestamp

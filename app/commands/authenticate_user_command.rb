@@ -1,15 +1,15 @@
 class AuthenticateUserCommand < BaseCommand
   private
 
-    attr_reader :email, :password
+    attr_reader :account, :password
 
-    def initialize(email, password)
-      @email = email
+    def initialize(account, password)
+      @account = account
       @password = password
     end
 
     def user
-      @user ||= User.find_by(email: email)
+      @user ||= User.find_by(account: account)
     end
 
     def password_valid?
@@ -26,7 +26,7 @@ class AuthenticateUserCommand < BaseCommand
 
     def contents
       {
-        user_id: user.id,
+        uid: user.id,
         expiration: 24.hours.from_now.to_i
       }
     end

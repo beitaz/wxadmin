@@ -21,6 +21,7 @@ class BaseCommand
 
   private
 
+    # *_ = [] 参数是空数组
     def initialize(*_)
       not_implemented
     end

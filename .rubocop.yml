@@ -10,6 +10,11 @@ AllCops:
 Layout/IndentationConsistency:
   EnforcedStyle: rails
 
+# Configuration parameters: MinNameLength (3), AllowNamesEndingInNumbers (true),
+#                           AllowedNames ([io, id, to]), ForbiddenNames ([])
+Naming/UncommunicativeMethodParamName:
+  MinNameLength: 1
+
 Security/Open:
   Exclude:
     - 'lib/**/*'
