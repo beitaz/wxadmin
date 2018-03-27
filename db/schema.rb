@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 20180326110200) do
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "account", null: false
+    t.string "username", null: false
     t.string "password_digest", null: false
     t.string "phone"
     t.string "email"
@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(version: 20180326110200) do
     t.boolean "deleted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["account"], name: "index_users_on_account"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["phone"], name: "index_users_on_phone", unique: true
+    t.index ["username"], name: "index_users_on_username"
   end
 
 end

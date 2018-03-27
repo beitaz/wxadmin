@@ -6,7 +6,7 @@ Knock.setup do |config|
   ## last forever.
   ##
   ## Default:
-  config.token_lifetime = 7.day
+  config.token_lifetime = 1.day
 
   ## Audience claim
   ## --------------
@@ -15,7 +15,7 @@ Knock.setup do |config|
   ## is intended for.
   ##
   ## Default:
-  # config.token_audience = nil
+  config.token_audience = nil
 
   ## If using Auth0, uncomment the line below
   # config.token_audience = -> { Rails.application.secrets.auth0_client_id }
@@ -45,7 +45,7 @@ Knock.setup do |config|
   ## Configure the public key used to decode tokens, if required.
   ##
   ## Default:
-  # config.token_public_key = nil
+  config.token_public_key = nil
 
   ## Exception Class
   ## ---------------
