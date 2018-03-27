@@ -15,5 +15,6 @@
 
 class User < ApplicationRecord
   has_secure_password
-  validates :account, presence: true
+  validates :account, presence: true, exclusion: { in: %w[admin superuser] }
+  validates :password, presence: true
 end
