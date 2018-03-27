@@ -1,0 +1,10 @@
+zh-CN:
+  activerecord:
+    models:
+      user: 用户
+    errors:
+      models:
+        user:
+          attributes:
+            account:
+              exclusion: "'admin' 和 'superuser' 已作为系统保留字段,无法使用."

@@ -10,6 +10,10 @@ AllCops:
 Layout/IndentationConsistency:
   EnforcedStyle: rails
 
+Metrics/MethodLength:
+  Exclude:
+    - 'db/**/*'
+
 # Configuration parameters: MinNameLength (3), AllowNamesEndingInNumbers (true),
 #                           AllowedNames ([io, id, to]), ForbiddenNames ([])
 Naming/UncommunicativeMethodParamName:

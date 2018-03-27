@@ -26,9 +26,8 @@ $ rails new wxadmin -T --skip-spring -C -M -d mysql --api -B
 * 运行复制 task
   ```SHELL
   $ rake config:copy
-  # 输出结果
-  rm -f config/application.yml
-  cp config/application.example.yml config/application.yml
+  >  rm -f config/application.yml
+  >  cp config/application.example.yml config/application.yml
   ```
 * bundle install
 * rails server
@@ -47,20 +46,31 @@ $ rails new wxadmin -T --skip-spring -C -M -d mysql --api -B
   end
   ```
 
-## 登录授权
+## 登录授权 [jwt](https://github.com/jwt/ruby-jwt) + [knock](https://github.com/nsarno/knock)
 任何可以解析 JSON 的终端都可以使用 API 程序,导致正常的 Cookie 授权无法使用,使用 [JSON Web Token](https://en.wikipedia.org/wiki/JSON_Web_Token) 进行登录授权.
 
-* 修改 `Gemfile` 添加 `gem 'jwt'` (若有 `gem 'devise'` 则移除)
-* 修改 `Gemfile` 取消 `gem 'bcrypt'` 前的注释
-* 生成用户模型
+* 修改 `Gemfile`
+  ```RUBY
+  gem 'bcrypt'
+  gem 'jwt'
+  gem 'knock'
+  ```
+* 生成 `config/initializers/knock.rb` 配置文件
   ```SHELL
-  $ rails g model User account password_digest phone email username admin:boolean
+  $ rails g knock:install
+  > create config/initializers/knock.rb
+  ```
+* 生成用户验证器 `app/controllers/user_token_controller.rb`
+  ```SHELL
+  $ rails g knock:token_controller user
+  > create  app/controllers/user_token_controller.rb
+  >  route  post 'user_token' => 'user_token#create'
   ```
 * 修改生成的 `app/models/user.rb`
   ```RUBY
   class User < ApplicationRecord
     has_secure_password
-    validates :account, presence: true
+    validates :account, presence: true, exclusion: { in: %w[admin superuser] }
   end
   ```
 

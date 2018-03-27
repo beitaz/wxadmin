@@ -1,0 +1,5 @@
+zh-CN:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 非法记录

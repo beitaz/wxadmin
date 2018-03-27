@@ -30,6 +30,7 @@ gem 'rack-cors'
 gem 'active_model_serializers'
 gem 'figaro'
 gem 'jwt'
+gem 'knock'
 
 group :development, :test do
   gem 'annotate'
@@ -38,6 +39,7 @@ group :development, :test do
   gem 'rubocop'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'i18n-debug'
 end
 
 group :development do

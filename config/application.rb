@@ -30,6 +30,9 @@ module Wxadmin
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '**', '*.{rb,yml}')]
+    config.i18n.default_locale = 'zh-CN'.to_sym
+
     # Redis configuration (To be fault tolerant when redis is not available you can set option raise_errors to false)
     # config.cache_store = :redis_store, 'redis://localhost:6379/0/cache', {expires_in: 90.minutes, raise_errors: false}
   end
